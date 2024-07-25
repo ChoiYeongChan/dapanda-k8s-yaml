@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::{your account id}:oidc-provider/oidc.eks.ap-northeast-2.amazonaws.com/id/FC9D2C19E96A8F69B325F301ED0B8D88"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "{your oidc id}:aud": "sts.amazonaws.com",
+                    "{yout oidc id}:sub": "system:serviceaccount:kube-system:karpenter"
+                }
+            }
+        }
+    ]
+}
